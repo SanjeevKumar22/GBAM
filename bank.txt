@@ -2,6 +2,12 @@ create database bank1;
 
 use bank1;
 
+CREATE TABLE admin(
+user varchar(30),
+password varchar(30) NOT NULL,
+PRIMARY KEY(user)
+);
+
 CREATE TABLE branch_master (
     branch_id varchar(6),
     branch_name varchar(30),
