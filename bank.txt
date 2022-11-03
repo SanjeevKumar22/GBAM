@@ -1,20 +1,22 @@
-CREATE DATABASE bank;
-USE bank;
+create database bank1;
+
+use bank1;
+
 CREATE TABLE branch_master (
     branch_id varchar(6),
     branch_name varchar(30),
     branch_city varchar(30),
 PRIMARY KEY( branch_id)
-    
 );
+
 CREATE TABLE loan_details (
-    customer_number varchar(6),
-    branch_id varchar(6) UNIQUE NOT NULL,
+    customer_number varchar(6) UNIQUE ,
+    branch_id varchar(6),
     loan_amount INT(7),
 PRIMARY KEY( branch_id),
 FOREIGN KEY (branch_id) REFERENCES branch_master(branch_id)
-    
 );
+
 CREATE TABLE customer_master (
     customer_number varchar(6),
 firstname VARCHAR(30),
