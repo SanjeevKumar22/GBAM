@@ -14,6 +14,7 @@ import { Navigate } from "react-router-dom";
 
 export const Login=()=>{
   // React States
+
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   // const navigate = UseNavigate();
@@ -21,9 +22,11 @@ export const Login=()=>{
   // User Login info
   const database = [
     {
+
       username: "dhruvi",
       password: "pass1"
     },
+
 
   ];
 
@@ -48,9 +51,11 @@ export const Login=()=>{
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
+
         return <Navigate replace to="/Menu" />
 
         
+
 
       }
     } else {
@@ -86,12 +91,13 @@ export const Login=()=>{
     </div>
   );
 
+
   return (
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
         {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
-        {isSubmitted ?  <Navigate replace to= "menu" />: renderForm}
+        {isSubmitted ?  <Navigate replace to= "Menu" />: renderForm}
 
       </div>
     </div>
@@ -99,3 +105,4 @@ export const Login=()=>{
 }
 
 export default Login;
+
