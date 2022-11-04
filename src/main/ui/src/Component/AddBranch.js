@@ -2,9 +2,11 @@ import React, { Suspense, useState } from "react";
 import "./Login.css";
 import { Navigate } from "react-router-dom";
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 
 export const AddBranch = () =>{
+    let navigate = useNavigate();
 
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -15,6 +17,7 @@ export const AddBranch = () =>{
         var { branchID, branchName, branchAddress } = document.forms[0];
         <div>{branchID}</div>
         setIsSubmitted(true);
+        navigate("/Menu");
 
     };
 
@@ -29,7 +32,7 @@ export const AddBranch = () =>{
             </div>
             <div className="input-container">
               <label>Branch Name </label>
-              <input type="text" name="branchName" required />
+              <input type="text" name="branchName" pass="required" />
          
             </div>
             <div className="input-container">

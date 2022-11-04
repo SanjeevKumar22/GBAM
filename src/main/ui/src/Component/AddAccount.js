@@ -13,8 +13,13 @@ export const AddAccount = () =>{
     let navigate = useNavigate();
 
     const menuRouterHandler = (event, route) => {
-      console.log("Button pressed: " + route);    
-      navigate("/"+route);
+
+        event.preventDefault();
+    
+        var { accNumber, customNumber, breanchID, balance, openDate } = document.forms[0];
+        setIsSubmitted(true);
+        console.log("Button pressed: " + route);    
+        navigate("/"+route);
     }
 
     const handleSubmit = (event) => {
@@ -38,22 +43,22 @@ export const AddAccount = () =>{
             </div>
             <div className="input-container">
               <label>Select Customer Number </label>
-              <input type="text" name="customNumber" required />
+              <input type="text" name="customNumber" rpass="required" />
          
             </div>
             <div className="input-container">
               <label>BranchID </label>
-              <input type="text" name="branchID" required />
+              <input type="text" name="branchID" pass="required" />
          
             </div>
             <div className="input-container">
               <label>Balance </label>
-              <input type="integer" name="balance" required />
+              <input type="integer" name="balance" pass="required" />
             </div>
 
             <div className="input-container">
               <label>Opening Date </label>
-              <input type="text" name="openDate" required />
+              <input type="text" name="openDate" pass="required" />
             </div>
             {/* <div className="button-container">
             <input type="submit" />
