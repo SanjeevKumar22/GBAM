@@ -1,3 +1,4 @@
+
 import React, {Fragment,useEffect} from 'react';
 import  { Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -9,10 +10,8 @@ import DispBranch from './Component/DispBranch';
 import DispCustomers from './Component/DispCustomers';
 
 
-import logo from './logo.svg';
-import './App.css';
-const App=()=> {
   return (
+
    <Router>
     <Fragment>
        
@@ -27,6 +26,7 @@ const App=()=> {
       </Routes>
     </Fragment>
    </Router>
+
   );
 }
 
