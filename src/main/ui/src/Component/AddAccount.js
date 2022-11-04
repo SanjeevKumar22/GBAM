@@ -2,11 +2,20 @@ import React, { Suspense, useState } from "react";
 import "./Login.css";
 import { Navigate } from "react-router-dom";
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
+
 
 
 export const AddAccount = () =>{
-
+    
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    let navigate = useNavigate();
+
+    const menuRouterHandler = (event, route) => {
+      console.log("Button pressed: " + route);    
+      navigate("/"+route);
+    }
 
     const handleSubmit = (event) => {
         //Prevent page reload
@@ -14,8 +23,10 @@ export const AddAccount = () =>{
     
         var { accNumber, customNumber, breanchID, balance, openDate } = document.forms[0];
         setIsSubmitted(true);
-
+      
     };
+
+
 
     const renderForm = (
         <div className="form">
@@ -38,16 +49,17 @@ export const AddAccount = () =>{
             <div className="input-container">
               <label>Balance </label>
               <input type="integer" name="balance" required />
-       
             </div>
+
             <div className="input-container">
               <label>Opening Date </label>
               <input type="text" name="openDate" required />
-         
             </div>
-            <div className="button-container">
-              <input type="submit" />
-            </div>
+            {/* <div className="button-container">
+            <input type="submit" />
+            </div> */}
+            <button onClick={event => menuRouterHandler(event, "Menu")}>Submit</button>
+
           </form>
         </div>
       );
@@ -56,6 +68,7 @@ export const AddAccount = () =>{
     <div className="app">
         <div className="AccountOpening-form">
         <div className="title">Open Account</div>
+
         {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
         {isSubmitted ?  <Navigate to= "./menu" />: renderForm}
 
