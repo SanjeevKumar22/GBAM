@@ -1,22 +1,37 @@
-import React, {Fragment,useEffect} from 'react';
-import  { Component } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { Suspense, useState } from "react";
+import ReactDOM from "react-dom";
 import {Login} from './Component/Login';
-import {Menu} from './Component/Menu'
+import {Menu} from './Component/Menu';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import "./App.css";
+// import { UseNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-import logo from './logo.svg';
-import './App.css';
-const App=()=> {
+
+function App() {
+
   return (
-   <Router>
-    <Fragment>
-       
-      <Routes>
-      <Route exact path="/" element={<Login/>}/>
-      <Route exact path="/menu" element={<Menu/>}/>
-      </Routes>
-    </Fragment>
-   </Router>
+    <Router>
+      <ul>
+        <li>
+          <Link to="/">Login</Link>
+        </li>
+        <li>
+          <Link to="/menu">Menu</Link>
+        </li>
+      </ul>
+      <Fragment>        
+        <Routes>
+          <Route exact path="/" element={<Login/>}/>
+          <Route exact path="/menu" element={<Menu/>}/>
+        </Routes>
+      </Fragment>
+    </Router>
   );
 }
 
