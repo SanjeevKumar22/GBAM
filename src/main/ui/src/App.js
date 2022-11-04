@@ -1,37 +1,32 @@
-import React, { Suspense, useState } from "react";
-import ReactDOM from "react-dom";
-import {Login} from './Component/Login';
-import {Menu} from './Component/Menu';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import "./App.css";
-// import { UseNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 
+import React, {Fragment,useEffect} from 'react';
+import  { Component } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from './Component/Login';
+import Menu from './Component/Menu';
+import {AddAccount} from './Component/AddAccount';
+import AddBranch from './Component/AddBranch';
+import DispBranch from './Component/DispBranch';
+import DispCustomers from './Component/DispCustomers';
 
-function App() {
 
   return (
-    <Router>
-      <ul>
-        <li>
-          <Link to="/">Login</Link>
-        </li>
-        <li>
-          <Link to="/menu">Menu</Link>
-        </li>
-      </ul>
-      <Fragment>        
-        <Routes>
-          <Route exact path="/" element={<Login/>}/>
-          <Route exact path="/menu" element={<Menu/>}/>
-        </Routes>
-      </Fragment>
-    </Router>
+
+   <Router>
+    <Fragment>
+       
+      <Routes>
+      <Route exact path="/" element={<Login/>}/>
+      <Route exact path="/Menu" element={<Menu/>}/>
+      <Route exact path ="/AddAccount" element ={<AddAccount />} />
+      <Route exact path ="/AddBranch" element ={<AddBranch />} />
+      <Route exact path ="/DispBranch" element ={<DispBranch />} />
+      <Route exact path ="/DispCustomers" element ={<DispCustomers />} />
+
+      </Routes>
+    </Fragment>
+   </Router>
+
   );
 }
 

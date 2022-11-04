@@ -1,7 +1,20 @@
-import { useEffect, useState } from "react";
-const Login = () => {
+import React, { Suspense, useState } from "react";
+import ReactDOM from "react-dom";
+import Menu from "./Menu";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import "./Login.css";
+// import { UseNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-      // React States
+
+export const Login=()=>{
+  // React States
+
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   // const navigate = UseNavigate();
@@ -9,13 +22,12 @@ const Login = () => {
   // User Login info
   const database = [
     {
-      username: "user1",
+
+      username: "dhruvi",
       password: "pass1"
     },
-    {
-      username: "user2",
-      password: "pass2"
-    }
+
+
   ];
 
   const errors = {
@@ -39,7 +51,12 @@ const Login = () => {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
-        return <Navigate replace to="/menu" />
+
+        return <Navigate replace to="/Menu" />
+
+        
+
+
       }
     } else {
       // Username not found
@@ -73,16 +90,19 @@ const Login = () => {
       </form>
     </div>
   );
- 
-    return (
-      <div className="app">
-        <div className="login-form">
-            <div className="title">Sign In</div>
-            {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
-            {isSubmitted ?  <Navigate replace to= "menu" />: renderForm}
 
-        </div>
+
+  return (
+    <div className="app">
+      <div className="login-form">
+        <div className="title">Sign In</div>
+        {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
+        {isSubmitted ?  <Navigate replace to= "Menu" />: renderForm}
+
       </div>
-    );
-};
+    </div>
+  );
+}
+
 export default Login;
+
