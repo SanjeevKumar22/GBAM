@@ -9,26 +9,35 @@ import {useNavigate} from "react-router-dom";
 export const AddAccount = () =>{
     
     const [isSubmitted, setIsSubmitted] = useState(false);
-
+    const [data, setData]= useState({
+        accNumber  : "",
+        customNumber : "",
+        branchID: "",
+        balance: "",
+        openDate: "",
+        accountType: "",
+        accountStatus:""
+    })
     let navigate = useNavigate();
 
-    const menuRouterHandler = (event, route) => {
-
-        event.preventDefault();
-    
-        var { accNumber, customNumber, breanchID, balance, openDate } = document.forms[0];
-        setIsSubmitted(true);
-        console.log("Button pressed: " + route);    
-        navigate("/"+route);
+    const onInputChange=(e)=> {
+        setData({...data, [e.target.id]:e.target.value});
+        // console.log(newdata)
     }
 
     const handleSubmit = (event) => {
         //Prevent page reload
         event.preventDefault();
-    
-        var { accNumber, customNumber, breanchID, balance, openDate } = document.forms[0];
+        
+        // var { accNumber, customNumber, breanchID, balance, openDate } = document.forms[0];
+        // console.log(accNumber)
         setIsSubmitted(true);
-      
+        console.log(data)
+        navigate("/Menu");
+        alert("New Account created")
+        // await axios.post("http://localhost:8080/branch", data);
+
+
     };
 
 
@@ -38,32 +47,74 @@ export const AddAccount = () =>{
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <label>Enter Account Number </label>
-              <input type="text" name="accNumber" required />
-           
+              <input  id = "accNumber"  value = {data.accNumber}
+              placeholder = "Account Number" type="text"  required 
+              onChange={(e) => onInputChange(e)}
+              />
             </div>
+
             <div className="input-container">
-              <label>Select Customer Number </label>
-              <input type="text" name="customNumber" rpass="required" />
-         
+              <label>Enter Customer Number </label>
+              <input  id = "customNumber"  value = {data.customNumber}
+              placeholder = "Customer Number" type="text"  required 
+              onChange={(e) => onInputChange(e)}
+              />
             </div>
+
+            
             <div className="input-container">
-              <label>BranchID </label>
-              <input type="text" name="branchID" pass="required" />
+              <label>Enter Branch ID </label>
+              <input  id = "branchID"  value = {data.branchID}
+              placeholder = "Branch ID" type="text"  required 
+              onChange={(e) => onInputChange(e)}
+              />
          
             </div>
             <div className="input-container">
               <label>Balance </label>
-              <input type="integer" name="balance" pass="required" />
+              <input  id = "balance"  value = {data.balance}
+              placeholder = "Balance" type="text"  required 
+              onChange={(e) => onInputChange(e)}
+              />
             </div>
+            
 
             <div className="input-container">
               <label>Opening Date </label>
-              <input type="text" name="openDate" pass="required" />
+              <input  id = "openDate"  value = {data.openDate}
+              placeholder = "Opening Date" type="date"  required 
+              onChange={(e) => onInputChange(e)}
+              />
             </div>
-            {/* <div className="button-container">
+
+            <div className="input-container">
+              <label>Account Type </label>
+             
+            <select value={data.accountType} onChange={(e) => onInputChange(e)}>
+                <hr></hr>
+                <option value="Savings">Savings Account</option>
+                <option value="Current">Current Account</option>
+                
+            </select>
+            
+            </div>
+
+            <div className="input-container">
+              <label>Account Status </label>
+              
+            <select value={data.accountStatus} onChange={(e) => onInputChange(e)}>
+                <hr></hr>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+               
+            </select>
+          
+            </div>
+
+            <div className="button-container">
             <input type="submit" />
-            </div> */}
-            <button onClick={event => menuRouterHandler(event, "Menu")}>Submit</button>
+            </div>
+           
 
           </form>
         </div>
@@ -72,7 +123,7 @@ export const AddAccount = () =>{
     return (
     <div className="app">
         <div className="AccountOpening-form">
-        <div className="title">Open Account</div>
+        <div className="title">Open Account for registered user</div>
 
         {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
         {isSubmitted ?  <Navigate to= "./menu" />: renderForm}

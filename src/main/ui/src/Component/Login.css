@@ -5,7 +5,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 50px;
-    height: 75vh;
+    height: 105vh;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     background-color: #f8f9fd;
   }
@@ -29,6 +29,12 @@
   input[type="submit"]:hover {
     background: #B0C4DE;
   }
+
+  h1{
+
+    text-align: center;
+    
+    }
   
   .button-container {
     display: flex;
@@ -51,7 +57,7 @@
   }
   
   .title {
-    font-size: 25px;
+    font-size: 20px;
     margin-bottom: 20px;
   }
   
