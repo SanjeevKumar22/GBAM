@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CustomerController {
@@ -26,7 +27,8 @@ public class CustomerController {
 
     @GetMapping(path = "/getcustomer/{cid}")
     public Customer getCustomerDetails(@PathVariable("cid") String cid){
-        return customerService.getCustomerDetails(cid);
+        Customer customer=customerService.getCustomerDetails(cid);
+        return customer;
     }
 
     @DeleteMapping(path = "/deletecustomer/{cid}")

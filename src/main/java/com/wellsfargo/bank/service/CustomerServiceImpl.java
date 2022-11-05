@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService  {
 	@Autowired
-	private CustomerRepository customerRepository;
+	CustomerRepository customerRepository;
 
 	public List<Customer> getAllCustomerDetails(){
 		return customerRepository.findAll();

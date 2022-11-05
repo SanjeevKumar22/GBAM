@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class BranchController {
     @Autowired
-    private BranchService branchService;
+    BranchService branchService;
 
     @PostMapping(path = "/addbranch")
     public void addBranchDetails(@RequestBody Branch branch){
