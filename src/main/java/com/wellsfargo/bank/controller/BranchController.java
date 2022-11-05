@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@ResponseBody
 public class BranchController {
     @Autowired
     BranchService branchService;
@@ -28,3 +27,4 @@ public class BranchController {
         return branchService.getAllBranchDetails();
     }
 }
+

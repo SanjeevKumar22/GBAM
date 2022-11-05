@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public interface CustomerService {
     public List<Customer> getAllCustomerDetails();
     public void addCustomer(Customer customer);

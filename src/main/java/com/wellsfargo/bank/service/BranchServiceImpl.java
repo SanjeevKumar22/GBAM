@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-@Component
 public class BranchServiceImpl implements BranchService{
     @Autowired
     BranchRepository branchRepository;
@@ -21,7 +20,7 @@ public class BranchServiceImpl implements BranchService{
 
     @Override
     public List<Branch> getAllBranchDetails(){
-        return (List)branchRepository.findAll();
+        return branchRepository.findAll();
     }
 
     @Override

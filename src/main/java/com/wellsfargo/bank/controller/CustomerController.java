@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@ResponseBody
 public class CustomerController {
 
     @Autowired
@@ -28,8 +27,7 @@ public class CustomerController {
 
     @GetMapping(path = "/getcustomer/{cid}")
     public Customer getCustomerDetails(@PathVariable("cid") String cid){
-        Customer customer=new Customer();
-        customer=customerService.getCustomerDetails(cid);
+        Customer customer=customerService.getCustomerDetails(cid);
         return customer;
     }
 

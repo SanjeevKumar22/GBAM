@@ -1,10 +1,10 @@
 package com.wellsfargo.bank.repository;
 
-import com.wellsfargo.bank.model.user;
+import com.wellsfargo.bank.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<user,String> {
+public interface UserRepository extends JpaRepository<User,String> {
 
 }

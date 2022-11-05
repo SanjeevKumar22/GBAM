@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="admin")
-public class user {
+public class User {
     @Id
     @NotNull
     @Column(name = "user_name")
@@ -18,7 +18,7 @@ public class user {
     @NotNull
     private String password;
 
-    public user(String user_name, String password) {
+    public User(String user_name, String password) {
         this.user_name = user_name;
         this.password = password;
     }
@@ -38,7 +38,7 @@ public class user {
     public void setPassword(String password) {
         this.password = password;
     }
-    public user(){
+    public User(){
 
     }
 
