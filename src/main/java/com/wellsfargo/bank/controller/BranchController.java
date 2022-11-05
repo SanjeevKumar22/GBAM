@@ -11,7 +11,7 @@ import java.util.List;
 @ResponseBody
 public class BranchController {
     @Autowired
-    private BranchService branchService;
+    BranchService branchService;
 
     @PostMapping(path = "/addbranch")
     public void addBranchDetails(@RequestBody Branch branch){

@@ -12,7 +12,7 @@ import java.util.Optional;
 @Component
 public class BranchServiceImpl implements BranchService{
     @Autowired
-    private BranchRepository branchRepository;
+    BranchRepository branchRepository;
 
     @Override
     public void addBranchDetails(Branch branch){
