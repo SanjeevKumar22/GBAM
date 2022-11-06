@@ -1,4 +1,5 @@
 package com.wellsfargo.bank.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,12 +7,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 @Entity
 public class Account {
-	@Id
+
 	@NotNull
 	private String customer_number;
+
+	@Id
+	@NotNull
 	private String account_number;
+
+	@NotNull
 	private String branch_id;
+
+	@NotNull
 	private String balance;
+
+	@NotNull
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date  opening_date;
 	public Account() {}
 	public Account(String customer_number,String account_number,String branch_id,String balance,Date opening_date) {

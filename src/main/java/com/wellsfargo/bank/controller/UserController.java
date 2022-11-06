@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
+   //Api call tested
+
    @Autowired
    UserService userService;
-   @GetMapping("/login")
+   @PostMapping("/login")
    public Boolean validateUser(@RequestBody User user){
       return userService.validate(user.getUser_name(), user.getPassword());
    }

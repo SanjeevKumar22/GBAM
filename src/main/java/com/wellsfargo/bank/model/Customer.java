@@ -1,31 +1,43 @@
 package com.wellsfargo.bank.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 @Entity
 @Table(name="customer")
 public class Customer {
 	@Id
 	@NotNull
+	@Column(name = "customer_number")
 	private String customer_number;
+
 	@NotNull
 	private String first_name;
+
 	@NotNull
 	private String middlename;
+
 	@NotNull
 	private String last_name;
+
 	@NotNull
 	private String customer_city;
+
 	@NotNull
 	private String customer_contact_no;
+
 	@NotNull
 	private String occupation;
+
 	@NotNull
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date customer_date_of_birth;
+	//private String customer_date_of_birth;
 
 	public Customer() {
 	}

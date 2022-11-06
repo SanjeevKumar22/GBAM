@@ -1,6 +1,7 @@
 package com.wellsfargo.bank.service;
 
 import com.wellsfargo.bank.model.Account;
+import com.wellsfargo.bank.model.Branch;
 import com.wellsfargo.bank.model.Customer;
 import com.wellsfargo.bank.repository.AccountRepository;
 
@@ -19,38 +20,39 @@ public class AccountServiceImpl implements AccountService{
   private AccountRepository accountRepository;
   @Autowired
   private CustomerRepository customerRepository;
-  
 
 @Override
-public void openAccount(Account account) {
+public boolean openAccount(Account account) {
 	// TODO Auto-generated method stub
-	accountRepository.save(account);
-	
+	Optional<Account> accountData = accountRepository.findById(account.getAccount_number());
+	if(!accountData.isPresent()){
+		accountRepository.save(account);
+		return true;
+	}
+	return  false;
 }
 
 @Override
-public void closeAccount(String customer_number) {
+public boolean closeAccount(String acc_no) {
 	// TODO Auto-generated method stub
-	accountRepository.deleteById(customer_number);
+	if(accountExists(acc_no)){
+		accountRepository.deleteById(acc_no);
+		return true;
+	}
+	return false;
 }
 
 @Override
 public boolean customerExists(String customer_number) {
 	// TODO Auto-generated method stub
 	Optional<Customer> customer=customerRepository.findById(customer_number);
-	if(customer.isPresent())
-		return true;
-	return false;
+	return customer.isPresent();
 }
 
 @Override
 public boolean accountExists(String customer_number) {
 	// TODO Auto-generated method stub
 	Optional<Account> account=accountRepository.findById(customer_number);
-	if(account.isPresent())
-		return true;
-	return false;
+	return account.isPresent();
 }
-
- 
 }

@@ -9,20 +9,21 @@ import java.util.List;
 
 @RestController
 public class BranchController {
+    //api call tested
     @Autowired
     BranchService branchService;
 
-    @PostMapping(path = "/addbranch")
-    public void addBranchDetails(@RequestBody Branch branch){
-        branchService.addBranchDetails(branch);
+    @PostMapping("/addbranch")
+    public boolean addBranchDetails(@RequestBody Branch branch){
+        return branchService.addBranchDetails(branch);
     }
 
-    @DeleteMapping(path = "/deletebranch/{bid}")
-    public void deleteBranch(@PathVariable("bid") String bid){
-        branchService.deleteBranch(bid);
+    @DeleteMapping("/deletebranch/{bid}")
+    public boolean deleteBranch(@PathVariable("bid") String bid){
+        return branchService.deleteBranch(bid);
     }
 
-    @GetMapping(path = "/allbranches")
+    @GetMapping("/allbranches")
     public List<Branch> getAllBranchDetails(){
         return branchService.getAllBranchDetails();
     }

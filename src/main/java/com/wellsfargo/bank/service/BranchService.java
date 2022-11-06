@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BranchService {
-    public void addBranchDetails(Branch branch);
+    public boolean addBranchDetails(Branch branch);
     public List<Branch> getAllBranchDetails();
-    public void deleteBranch(String branch_id);
+    public boolean deleteBranch(String branch_id);
+    public boolean accountExists(String branch_id);
 }

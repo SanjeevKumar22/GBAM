@@ -1,4 +1,5 @@
 package com.wellsfargo.bank.service;
+import com.wellsfargo.bank.model.Account;
 import com.wellsfargo.bank.model.Customer;
 import com.wellsfargo.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +14,34 @@ public class CustomerServiceImpl implements CustomerService  {
 	CustomerRepository customerRepository;
 
 	public List<Customer> getAllCustomerDetails(){
-		return customerRepository.findAll();
+		//need to handle null value in frontend if it is null
+			return customerRepository.findAll();
 	}
-	
-	public void addCustomer(Customer customer) {
-		customerRepository.save(customer);
+
+	public boolean addCustomer(Customer customer) {
+		if(!customerNumberExists(customer.getCustomer_number())){
+			customerRepository.save(customer);
+			return true;
+		}
+		return false;
+
 	}
 
 	public Customer getCustomerDetails(String customer_number) {
+		//need to handle exception
 		return customerRepository.findById(customer_number).get();
 	}
 
-	public void deleteCustomer(String customer_number) {
-		customerRepository.deleteById(customer_number);
+	public boolean deleteCustomer(String customer_number) {
+		if(customerNumberExists(customer_number)){
+			customerRepository.deleteById(customer_number);
+			return true;
+		}
+		return false;
+	}
+	public boolean customerNumberExists(String cust_no){
+		Optional<Customer>  customer_id=customerRepository.findById(cust_no);
+		return customer_id.isPresent();
 	}
 }
 

@@ -14,10 +14,10 @@ public class UserService {
     UserRepository userRepository;
     public boolean validate(String userName, String password){
         Optional<User> userData = userRepository.findById(userName);
-
-        if(userData.isPresent()){
-            return userData.get().getPassword().equals(password);
-        }
-        return  false;
+//        if(userData.isPresent()){
+//            return userData.get().getPassword().equals(password);
+//        }
+//        return  false;
+        return userData.map(user -> user.getPassword().equals(password)).orElse(false);
     }
 }

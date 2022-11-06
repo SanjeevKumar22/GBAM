@@ -10,29 +10,29 @@ import java.util.Optional;
 
 @RestController
 public class CustomerController {
-
+//api call tested
     @Autowired
     CustomerService customerService;
 
-    @GetMapping(path = "/allcustomers")
+    @GetMapping("/allcustomers")
     public List<Customer> listAll(){
         return customerService.getAllCustomerDetails();
     }
 
     @PostMapping("/addcustomer")
-    public void addCustomer(@RequestBody Customer customer){
-        customerService.addCustomer(customer);
+    public boolean addCustomer(@RequestBody Customer customer){
+        return customerService.addCustomer(customer);
     }
 
 
-    @GetMapping(path = "/getcustomer/{cid}")
+    @GetMapping("/getcustomer/{cid}")
     public Customer getCustomerDetails(@PathVariable("cid") String cid){
         Customer customer=customerService.getCustomerDetails(cid);
         return customer;
     }
 
-    @DeleteMapping(path = "/deletecustomer/{cid}")
-    public void deleteCustomer(@PathVariable("cid") String cid){
-        customerService.deleteCustomer(cid);
+    @DeleteMapping("/deletecustomer/{cid}")
+    public boolean deleteCustomer(@PathVariable("cid") String cid){
+        return customerService.deleteCustomer(cid);
     }
 }
