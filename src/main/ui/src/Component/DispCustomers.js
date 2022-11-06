@@ -51,6 +51,14 @@ const DispCustomers = () => {
   //   fetchData();
   // }, []);
 
+  const deleteCustomer = async (id) => {
+    console.log(id);
+    let response = await axios.delete(
+      `http://localhost:8081/deletecustomer/${id}`
+    );
+    window.location.reload(false);
+  };
+
   return (
     <div>
       <h1>List of Customers</h1>
@@ -66,24 +74,33 @@ const DispCustomers = () => {
           <th>occupation</th>
         </tr>
 
-        {data.map((a, index) => (
-          <tr data-index={index}>
-            <td>{a.customer_number}</td>
-            <td>{a.customer_city}</td>
-            <td>{a.customer_contact_no}</td>
-            <td>{a.customer_date_of_birth}</td>
-            <td>{a.customer_number}</td>
-            <td>{a.first_name}</td>
-            <td>{a.last_name}</td>
-            <td>{a.middlename}</td>
-            <td>{a.occupation}</td>
-            <td>
-              <Button className="bg-primary" type="submit" value="Submit">
-                delete
-              </Button>
-            </td>
-          </tr>
-        ))}
+        {data.length > 0 ? (
+          data.map((a, index) => (
+            <tr data-index={index}>
+              <td>{a.customer_number}</td>
+              <td>{a.customer_city}</td>
+              <td>{a.customer_contact_no}</td>
+              <td>{a.customer_date_of_birth}</td>
+              <td>{a.customer_number}</td>
+              <td>{a.first_name}</td>
+              <td>{a.last_name}</td>
+              <td>{a.middlename}</td>
+              <td>{a.occupation}</td>
+              <td>
+                <Button
+                  className="bg-primary"
+                  type="submit"
+                  value="Submit"
+                  onClick={() => deleteCustomer(a.customer_number)}
+                >
+                  delete
+                </Button>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <div className="text-center">There is no Customer Details</div>
+        )}
       </table>
       <Pagination
         nPages={nPages}

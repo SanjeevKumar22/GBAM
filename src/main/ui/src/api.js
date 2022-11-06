@@ -9,10 +9,3 @@ export const authenticateLogin = async (user) => {
     console.log("Error while calling login API: ", error);
   }
 };
-export const getAllCustomer = async () => {
-  try {
-    return await axios.get(`${url}/allcustomers`);
-  } catch (error) {
-    console.log("Error while calling login API: ", error);
-  }
-};

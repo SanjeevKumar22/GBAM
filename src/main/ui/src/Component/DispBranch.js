@@ -50,6 +50,11 @@ const DispBranch = () => {
   // useEffect(() => {
   //   fetchData();
   // }, []);
+  const deleteBranch = async (id) => {
+    console.log(id);
+    let res = await axios.delete(`http://localhost:8081/deletebranch/${id}`);
+    window.location.reload(false);
+  };
 
   return (
     <div>
@@ -61,19 +66,28 @@ const DispBranch = () => {
           <th>branch_name</th>
         </tr>
 
-        {data.map((a, index) => (
-          <tr data-index={index}>
-            <td>{a.branch_id}</td>
-            <td>{a.branch_city}</td>
-            <td>{a.branch_name}</td>
+        {data.length > 0 ? (
+          data.map((a, index) => (
+            <tr data-index={index}>
+              <td>{a.branch_id}</td>
+              <td>{a.branch_city}</td>
+              <td>{a.branch_name}</td>
 
-            <td>
-              <Button className="bg-primary" type="submit" value="Submit">
-                delete
-              </Button>
-            </td>
-          </tr>
-        ))}
+              <td>
+                <Button
+                  className="bg-primary"
+                  type="submit"
+                  value="Submit"
+                  onClick={() => deleteBranch(a.branch_id)}
+                >
+                  delete
+                </Button>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <div>There is no branch details</div>
+        )}
       </table>
       <Pagination
         nPages={nPages}
