@@ -8,11 +8,14 @@ import AddBranch from "./Component/AddBranch";
 import DispBranch from "./Component/DispBranch";
 import DispCustomers from "./Component/DispCustomers";
 import { render } from "react-dom";
-
+import Navbar from "./Component/Navbar"
 function App() {
   return (
+
     <Router>
+      <Navbar/>
       <Fragment>
+        
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/Menu" element={<Menu />} />
