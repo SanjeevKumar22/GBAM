@@ -13,19 +13,29 @@ const Menu = () => {
   }
  
     return (
-      <div>
-        <h1>Menu</h1>
+      <div classname="form" style={{
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center'
+      }}>
+        <div classname="inputcontainer">
+        <h1 classname="large text-primary">Menu</h1>
         <hr></hr>
-        <button onClick={event => menuRouterHandler(event, "DispCustomers")}>Display Customers</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onClick={event => menuRouterHandler(event, "DispCustomers")}>Display Customers  </button>
         {/*<button onClick={<Navigate replace to="loan" />}>Apply for Loan</button>*/}
-        <hr></hr>
-        <button onClick={event => menuRouterHandler(event, "DispBranch")}>Display Branch Details</button>
-        {/*<button onClick={<Navigate replace to="transactions" />}>Transactions</button>*/}
-        <hr></hr>
-        <button onClick={event => menuRouterHandler(event, "AddAccount")}>Add Customer</button>
+      <br></br>
+      <br></br>
+      <button type="button" class="btn btn-primary btn-lg btn-block" onClick={event => menuRouterHandler(event, "AddBranch")}>Add Branch          </button>
+      <br></br>
+      <br></br>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onClick={event => menuRouterHandler(event, "AddAccount")}>Add Customer         </button>
         {/*<button onClick={<Navigate replace to="statement" />}>View Statement</button>*/}
-        <hr></hr>
-        <button onClick={event => menuRouterHandler(event, "AddBranch")}>Add Branch</button>
+       <br></br>
+       <br></br>
+       
+        <button type="button" class="btn btn-primary btn-lg btn-block" onClick={event => menuRouterHandler(event, "DispBranch")}>Display Branch Details</button>
+        {/*<button onClick={<Navigate replace to="transactions" />}>Transactions</button>*/}
+        </div>
       </div>
     );
 };

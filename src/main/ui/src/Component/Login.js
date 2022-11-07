@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { authenticateLogin } from "../api";
 
@@ -13,7 +13,10 @@ export const Login = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [user_name, setuser_name] = useState("");
   const [password, setpassword] = useState("");
-
+  const navigate = useNavigate();
+  console.log("auth", localStorage.getItem("isAuthenticated"));
+  //localStorage.setItem("isAuthenticated", "false");
+  //window.location.pathname = "/";
   // const navigate = UseNavigate();
   //  const [formData,setFormData]= useState({
   //   user_name: "",
@@ -44,6 +47,11 @@ export const Login = () => {
     setIsSubmitted(response.data);
     if (!response.data) {
       setErrorMessages(true);
+    }
+    else
+    {
+      localStorage.setItem("isAuthenticated", "true");
+      window.location.pathname = "/";
     }
     // console.log(formData)
 
