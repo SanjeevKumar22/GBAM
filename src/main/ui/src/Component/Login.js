@@ -51,7 +51,7 @@ export const Login = () => {
     else
     {
       localStorage.setItem("isAuthenticated", "true");
-      window.location.pathname = "/";
+      window.location.pathname = "/menu";
     }
     // console.log(formData)
 

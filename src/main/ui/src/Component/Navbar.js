@@ -38,7 +38,7 @@ const nonadmin=(
 )
 function ColorSchemesExample() {
   
-  return ( user==true?admin:nonadmin
+  return ( user?admin:nonadmin
   )
 }
 

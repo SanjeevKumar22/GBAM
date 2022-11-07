@@ -2,7 +2,8 @@ import React from "react";
 import { Navigate , Route } from "react-router-dom";
 const useAuth=()=>{
     const user=localStorage.getItem('isAuthenticated')
-    if(user==true){
+    console.log("menu",user)
+    if(user) {
       return true
     } else {
       return false
