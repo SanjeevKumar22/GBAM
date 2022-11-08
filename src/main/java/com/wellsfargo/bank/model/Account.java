@@ -20,17 +20,24 @@ public class Account {
 
 	@NotNull
 	private String balance;
-
+	
 	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date  opening_date;
+	@NotNull
+	private String account_type;
+	@NotNull
+	private String account_status;
+	
 	public Account() {}
-	public Account(String customer_number,String account_number,String branch_id,String balance,Date opening_date) {
-		this.customer_number=customer_number;
-		this.account_number=account_number;
-		this.branch_id=branch_id;
-		this.balance=balance;
-		this.opening_date=opening_date;
+		public Account(String customer_number, String account_number, String branch_id, String balance, Date opening_date, String account_type, String account_status) {
+		this.customer_number = customer_number;
+		this.account_number = account_number;
+		this.branch_id = branch_id;
+		this.balance = balance;
+		this.opening_date = opening_date;
+		this.account_type = account_type;
+		this.account_status = account_status;
 	}
 	public String getCustomer_number() {
 		return customer_number;
@@ -40,6 +47,13 @@ public class Account {
 	}
 	public String getAccount_number() {
 		return account_number;
+	}
+		public String getAccount_type() {
+		return account_type;
+	}
+
+	public void setAccount_type(String account_type) {
+		this.account_type = account_type;
 	}
 	public void setAccount_number(String account_number) {
 		this.account_number = account_number;
