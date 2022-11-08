@@ -19,23 +19,39 @@ public class CustomerController {
 
     @GetMapping("/allcustomers")
     public ResponseEntity<List<Customer>> listAll(){
-        return new ResponseEntity<>(customerService.getAllCustomerDetails(),HttpStatus.ACCEPTED);
+        try {
+            return new ResponseEntity<>(customerService.getAllCustomerDetails(),HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.ACCEPTED);
+        }
     }
 
     @PostMapping("/addcustomer")
     public ResponseEntity<Boolean> addCustomer(@RequestBody Customer customer){
-        return new ResponseEntity<>(customerService.addCustomer(customer), HttpStatus.ACCEPTED);
+        try {
+            return new ResponseEntity<>(customerService.addCustomer(customer), HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(false,HttpStatus.ACCEPTED);
+        }
     }
 
 
     @GetMapping("/getcustomer/{cid}")
     public ResponseEntity<Customer> getCustomerDetails(@PathVariable("cid") String cid){
-        Customer customer=customerService.getCustomerDetails(cid);
-        return new ResponseEntity<>(customer,HttpStatus.ACCEPTED);
+        try {
+            Customer customer=customerService.getCustomerDetails(cid);
+            return new ResponseEntity<>(customer,HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.ACCEPTED);
+        }
     }
 
     @DeleteMapping("/deletecustomer/{cid}")
     public ResponseEntity<Boolean> deleteCustomer(@PathVariable("cid") String cid){
-        return new ResponseEntity<>(customerService.deleteCustomer(cid),HttpStatus.ACCEPTED);
+        try {
+            return new ResponseEntity<>(customerService.deleteCustomer(cid),HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(false,HttpStatus.ACCEPTED);
+        }
     }
 }

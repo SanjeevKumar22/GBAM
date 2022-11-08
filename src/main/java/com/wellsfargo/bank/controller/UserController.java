@@ -3,6 +3,7 @@ package com.wellsfargo.bank.controller;
 import com.wellsfargo.bank.model.User;
 import com.wellsfargo.bank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,10 @@ public class UserController {
    UserService userService;
    @PostMapping("/login")
    public ResponseEntity<Boolean> validateUser(@RequestBody User user){
-      return userService.validate(user.getUser_name(), user.getPassword());
+      try {
+         return userService.validate(user.getUser_name(), user.getPassword());
+      }catch (Exception e){
+         return new ResponseEntity<>(false, HttpStatus.ACCEPTED);
+      }
    }
 }

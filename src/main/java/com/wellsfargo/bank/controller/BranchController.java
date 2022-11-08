@@ -17,18 +17,30 @@ public class BranchController {
     BranchService branchService;
 
     @PostMapping("/addbranch")
-    public boolean addBranchDetails(@RequestBody Branch branch){
-        return branchService.addBranchDetails(branch);
+    public ResponseEntity<Boolean> addBranchDetails(@RequestBody Branch branch){
+        try{
+            return new ResponseEntity<>(branchService.addBranchDetails(branch),HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(false,HttpStatus.ACCEPTED);
+        }
     }
 
     @DeleteMapping("/deletebranch/{bid}")
     public ResponseEntity<Boolean> deleteBranch(@PathVariable("bid") String bid){
-        return new ResponseEntity<>(branchService.deleteBranch(bid),HttpStatus.ACCEPTED);
+       try {
+           return new ResponseEntity<>(branchService.deleteBranch(bid),HttpStatus.ACCEPTED);
+       }catch (Exception e){
+           return new ResponseEntity<>(false,HttpStatus.ACCEPTED);
+       }
     }
 
     @GetMapping("/allbranches")
     public ResponseEntity<List<Branch>> getAllBranchDetails(){
-        return new ResponseEntity<>(branchService.getAllBranchDetails(), HttpStatus.ACCEPTED);
+        try {
+            return new ResponseEntity<>(branchService.getAllBranchDetails(), HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.ACCEPTED);
+        }
     }
 }
 

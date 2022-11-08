@@ -1,13 +1,18 @@
 package com.wellsfargo.bank.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Branch {
     @Id
+   @NotNull
     private String branch_id;
+    @NotNull
     private String branch_name;
+    @NotNull
     private String branch_city;
 
     public Branch() {
