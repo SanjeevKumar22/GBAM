@@ -3,6 +3,8 @@ package com.wellsfargo.bank.controller;
 import com.wellsfargo.bank.model.Customer;
 import com.wellsfargo.bank.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,24 +18,24 @@ public class CustomerController {
     CustomerService customerService;
 
     @GetMapping("/allcustomers")
-    public List<Customer> listAll(){
-        return customerService.getAllCustomerDetails();
+    public ResponseEntity<List<Customer>> listAll(){
+        return new ResponseEntity<>(customerService.getAllCustomerDetails(),HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/addcustomer")
-    public boolean addCustomer(@RequestBody Customer customer){
-        return customerService.addCustomer(customer);
+    public ResponseEntity<Boolean> addCustomer(@RequestBody Customer customer){
+        return new ResponseEntity<>(customerService.addCustomer(customer), HttpStatus.ACCEPTED);
     }
 
 
     @GetMapping("/getcustomer/{cid}")
-    public Customer getCustomerDetails(@PathVariable("cid") String cid){
+    public ResponseEntity<Customer> getCustomerDetails(@PathVariable("cid") String cid){
         Customer customer=customerService.getCustomerDetails(cid);
-        return customer;
+        return new ResponseEntity<>(customer,HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/deletecustomer/{cid}")
-    public boolean deleteCustomer(@PathVariable("cid") String cid){
-        return customerService.deleteCustomer(cid);
+    public ResponseEntity<Boolean> deleteCustomer(@PathVariable("cid") String cid){
+        return new ResponseEntity<>(customerService.deleteCustomer(cid),HttpStatus.ACCEPTED);
     }
 }

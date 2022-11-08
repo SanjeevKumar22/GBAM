@@ -15,7 +15,7 @@ public class UserController {
    @Autowired
    UserService userService;
    @PostMapping("/login")
-   public Boolean validateUser(@RequestBody User user){
+   public ResponseEntity<Boolean> validateUser(@RequestBody User user){
       return userService.validate(user.getUser_name(), user.getPassword());
    }
 }

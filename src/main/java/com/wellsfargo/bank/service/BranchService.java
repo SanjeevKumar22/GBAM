@@ -1,6 +1,7 @@
 package com.wellsfargo.bank.service;
 
 import com.wellsfargo.bank.model.Branch;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
