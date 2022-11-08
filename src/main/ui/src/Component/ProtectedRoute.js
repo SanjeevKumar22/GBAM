@@ -3,7 +3,7 @@ import { Navigate , Route } from "react-router-dom";
 const useAuth=()=>{
     const user=localStorage.getItem('isAuthenticated')
     console.log("menu",user)
-    if(user) {
+    if(user==="true") {
       return true
     } else {
       return false

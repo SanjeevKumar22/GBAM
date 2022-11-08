@@ -145,6 +145,7 @@ export const AddBranch = () => {
     console.log(admin);
     let response = await addBranch(admin);
     setIsSubmitted(true);
+    console.log(response.data)
     if (!response.data) {
       setIsSubmitted(false);
     }

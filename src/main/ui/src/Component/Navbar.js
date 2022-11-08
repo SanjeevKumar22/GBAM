@@ -1,7 +1,18 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-const user=localStorage.getItem('isAuthenticated')
+var user=localStorage.getItem('isAuthenticated');
+var b=false;
+if(user==="true")
+ b=true;
+ else
+ b=false;
+console.log("navbar",user)
+const logout=()=> {
+    localStorage.setItem("isAuthenticated", "false");
+    window.location.pathname = "/";
+}
+console.log("b",b)
 const admin =(<>
      
   <br />
@@ -10,7 +21,7 @@ const admin =(<>
       <Navbar.Brand href="#home">Bank Admin Portal</Navbar.Brand>
       <Nav className="me-auto">
         <Nav.Link href="/menu">Home</Nav.Link>
-        
+        <button onClickCapture={logout}>logout</button> 
       </Nav>
     </Container>
   </Navbar>
@@ -18,6 +29,7 @@ const admin =(<>
   <br />
   
 </>);
+
 const nonadmin=(
   <>
      
@@ -26,7 +38,7 @@ const nonadmin=(
         <Container>
           <Navbar.Brand href="#home">Bank Admin Portal</Navbar.Brand>
           <Nav className="me-auto">
-            
+        {/* <button onClickCapture={logout}>logout</button> */}
             
           </Nav>
         </Container>
@@ -40,7 +52,7 @@ function ColorSchemesExample() {
   
   return ( 
     <>
-    {localStorage.getItem('isAuthenticated')?admin:nonadmin}
+    {b?admin:nonadmin}
       </>
   )
 }
