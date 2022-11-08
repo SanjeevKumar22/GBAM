@@ -4,29 +4,25 @@
 // import axios from 'axios';
 // import {useNavigate} from "react-router-dom";
 
-
-
 // export const AddAccount = () =>{
-    
+
 //     const [isSubmitted, setIsSubmitted] = useState(false);
 
 //     let navigate = useNavigate();
 
 //     const menuRouterHandler = (event, route) => {
-//       console.log("Button pressed: " + route);    
+//       console.log("Button pressed: " + route);
 //       navigate("/"+route);
 //     }
 
 //     const handleSubmit = (event) => {
 //         //Prevent page reload
 //         event.preventDefault();
-    
+
 //         var { accNumber, customNumber, breanchID, balance, openDate } = document.forms[0];
 //         setIsSubmitted(true);
-      
+
 //     };
-
-
 
 //     const renderForm = (
 //         <div className="form">
@@ -34,17 +30,17 @@
 //             <div className="input-container">
 //               <label>Enter Account Number </label>
 //               <input type="text" name="accNumber" required />
-           
+
 //             </div>
 //             <div className="input-container">
 //               <label>Select Customer Number </label>
 //               <input type="text" name="customNumber" required />
-         
+
 //             </div>
 //             <div className="input-container">
 //               <label>BranchID </label>
 //               <input type="text" name="branchID" required />
-         
+
 //             </div>
 //             <div className="input-container">
 //               <label>Balance </label>
@@ -78,11 +74,10 @@
 
 // }
 
-
 // export default AddAccount;
 
-
 import React, { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
@@ -90,14 +85,18 @@ import { useNavigate } from "react-router-dom";
 import { addAcc } from "../api";
 export const AddAccount = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+
   const [account_number, setAcc_no] = useState("");
   const [balance, setBalc] = useState("");
   const [opening_date, setDate] = useState("");
   const [data, setData] = useState([]);
   const [data1, setData1] = useState([]);
   const [customer_number, setCustomer_number] = useState("");
-  const [branch_id, setBranch_id] = useState("");
 
+  const [account_status, setAccount_status] = useState("");
+  const [account_type, setAccount_type] = useState("");
+  const [branch_id, setBranch_id] = useState("");
+  const [iserr, isSeterr] = useState(false);
   let navigate = useNavigate();
 
   const menuRouterHandler = (event, route) => {
@@ -123,12 +122,16 @@ export const AddAccount = () => {
       balance,
       branch_id,
       opening_date,
+      account_status,
+      account_type,
     };
     console.log(admin);
     let response = await addAcc(admin);
+    console.log(response.data);
     setIsSubmitted(true);
     if (!response.data) {
-      setIsSubmitted(true);
+      setIsSubmitted(false);
+      isSeterr(true);
     }
   };
 
@@ -248,13 +251,41 @@ export const AddAccount = () => {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
+        <div className="input-container">
+          <label>Account type </label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            onChange={(e) => setAccount_type(e.target.value)}
+          >
+            <option selected>Select Account Type</option>
+
+            <option value={"Savings"}>Savings</option>
+            <option value={"Current"}>Cuurent</option>
+          </select>
+        </div>
+        <div className="input-container">
+          <label>Account Status </label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            onChange={(e) => setAccount_status(e.target.value)}
+          >
+            <option selected>Select Account Status</option>
+
+            <option value={"Active"}>Active</option>
+            <option value={"Inactive"}>Inactive</option>
+          </select>
+        </div>
         {/* <div className="button-container">
             <input type="submit" />
             </div> */}
         {/* <button onClick={(event) => menuRouterHandler(event, "Menu")}>
           Submit
         </button> */}
-        <button>Submit</button>
+        <div className="button-container">
+          <input type="submit" />
+        </div>
       </form>
     </div>
   );
@@ -263,7 +294,13 @@ export const AddAccount = () => {
     <div className="app">
       <div className="AccountOpening-form">
         <div className="title">Open Account</div>
-
+        {iserr ? (
+          <div class="alert alert-danger" role="alert">
+            Account already exists
+          </div>
+        ) : (
+          ""
+        )}
         {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
         {isSubmitted ? <Navigate to="/menu" /> : renderForm}
       </div>

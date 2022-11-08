@@ -10,7 +10,6 @@
 //   }
 // };
 
-
 import axios from "axios";
 
 const url = "http://localhost:8081";
@@ -33,6 +32,13 @@ export const addAcc = async (user) => {
 export const addBranch = async (user) => {
   try {
     return await axios.post(`${url}/addbranch`, user);
+  } catch (error) {
+    console.log("Error while calling login API: ", error);
+  }
+};
+export const deleteloan = async (id) => {
+  try {
+    return await axios.delete(`${url}/deleteloan/${id}`);
   } catch (error) {
     console.log("Error while calling login API: ", error);
   }

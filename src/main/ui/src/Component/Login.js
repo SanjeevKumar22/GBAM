@@ -10,7 +10,6 @@ console.log("auth:", localStorage.getItem("isAuthenticated"));
 
 export const Login = () => {
   // React States
-
   const [errorMessages, setErrorMessages] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [user_name, setuser_name] = useState("");
@@ -49,9 +48,7 @@ export const Login = () => {
     setIsSubmitted(response.data);
     if (!response.data) {
       setErrorMessages(true);
-    }
-    else
-    {
+    } else {
       localStorage.setItem("isAuthenticated", "true");
       window.location.pathname = "/menu";
     }
@@ -115,7 +112,7 @@ export const Login = () => {
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">Sign In</div>
+        <div className="text-center title">Sign In</div>
 
         {isSubmitted ? <Navigate replace to="Menu" /> : renderForm}
       </div>

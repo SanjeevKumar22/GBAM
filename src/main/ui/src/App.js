@@ -8,23 +8,70 @@ import AddBranch from "./Component/AddBranch";
 import DispBranch from "./Component/DispBranch";
 import DispCustomers from "./Component/DispCustomers";
 import { render } from "react-dom";
-import Navbar from "./Component/Navbar"
+import Navbar from "./Component/Navbar";
 import PrivateRoute from "./Component/ProtectedRoute";
+import Loan from "./Component/Loan";
 function App() {
   return (
-
     <Router>
-      <Navbar/>
+      <Navbar />
       <Fragment>
-        
         <Routes>
           <Route exact path="/" element={<Login />} />
-          <Route exact path="/Menu" element={
-          <PrivateRoute><Menu /></PrivateRoute>} />
-          <Route exact path="/AddAccount" element={<PrivateRoute><AddAccount /></PrivateRoute>} />
-          <Route exact path="/AddBranch" element={<PrivateRoute><AddBranch /></PrivateRoute>} />
-          <Route exact path="/DispBranch" element={<PrivateRoute><DispBranch /></PrivateRoute>} />
-          <Route exact path="/DispCustomers" element={<PrivateRoute><DispCustomers /></PrivateRoute>} />
+          <Route
+            exact
+            path="/Menu"
+            element={
+              <PrivateRoute>
+                <Menu />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="/AddAccount"
+            element={
+              <PrivateRoute>
+                <AddAccount />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="/AddBranch"
+            element={
+              <PrivateRoute>
+                <AddBranch />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="/DispBranch"
+            element={
+              <PrivateRoute>
+                <DispBranch />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="/DispCustomers"
+            element={
+              <PrivateRoute>
+                <DispCustomers />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="/DispCustomers/Loan/:id"
+            element={
+              <PrivateRoute>
+                <Loan />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Fragment>
     </Router>

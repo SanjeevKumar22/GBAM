@@ -3,7 +3,6 @@
 // // import { Navigate } from "react-router-dom";
 // // import axios from 'axios';
 
-
 // // export const AddBranch = () =>{
 
 // //     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -24,13 +23,12 @@
 // //             <div className="input-container">
 // //               <label>Branch ID </label>
 // //               <input type="text" name="branchID" required />
-              
-           
+
 // //             </div>
 // //             <div className="input-container">
 // //               <label>Branch Name </label>
 // //               <input type="text" name="branchName" required />
-         
+
 // //             </div>
 // //             <div className="input-container">
 // //               <label>Branch Address </label>
@@ -57,15 +55,12 @@
 
 // // }
 
-
 // // export default AddBranch;
-
 
 // import React, { Suspense, useState } from "react";
 // import "./Login.css";
 // import { Navigate } from "react-router-dom";
 // import axios from 'axios';
-
 
 // export const AddBranch = () =>{
 
@@ -87,13 +82,12 @@
 //             <div className="input-container">
 //               <label>Branch ID </label>
 //               <input type="text" name="branchID" required />
-              
-           
+
 //             </div>
 //             <div className="input-container">
 //               <label>Branch Name </label>
 //               <input type="text" name="branchName" required />
-         
+
 //             </div>
 //             <div className="input-container">
 //               <label>Branch Address </label>
@@ -120,7 +114,6 @@
 
 // }
 
-
 // export default AddBranch;
 
 import React, { useState } from "react";
@@ -133,6 +126,7 @@ export const AddBranch = () => {
   const [branch_id, setBranch_id] = useState("");
   const [branch_city, setBranch_city] = useState("");
   const [branch_name, setbranch_name] = useState("");
+  const [iserror, isSeterror] = useState(false);
 
   const handleSubmit = async (e) => {
     //Prevent page reload
@@ -145,8 +139,10 @@ export const AddBranch = () => {
     console.log(admin);
     let response = await addBranch(admin);
     setIsSubmitted(true);
-    console.log(response.data)
+    console.log(response.data);
+
     if (!response.data) {
+      isSeterror(true);
       setIsSubmitted(false);
     }
   };
@@ -155,6 +151,16 @@ export const AddBranch = () => {
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
+          <label>Branch ID </label>
+          <input
+            type="text"
+            name="branchid"
+            required
+            onChange={(e) => setBranch_id(e.target.value)}
+          />
+        </div>
+
+        {/* <div className="input-container">
           <label>BranchID </label>
           <select
             class="form-select"
@@ -164,9 +170,17 @@ export const AddBranch = () => {
             <option selected>Select Branch ID</option>
             <option value="b001">b001</option>
           </select>
-        </div>
+        </div> */}
         <div className="input-container">
           <label>Branch Name </label>
+          <input
+            type="text"
+            name="branchname"
+            required
+            onChange={(e) => setbranch_name(e.target.value)}
+          />
+
+          {/* <label>Branch Name </label>
           <select
             class="form-select"
             aria-label="Default select example"
@@ -174,7 +188,7 @@ export const AddBranch = () => {
           >
             <option selected>Select Branch Name</option>
             <option value="Delhi">Delhi</option>
-          </select>
+          </select> */}
         </div>
         <div className="input-container">
           <label>Branch City </label>
@@ -184,7 +198,11 @@ export const AddBranch = () => {
             onChange={(e) => setBranch_city(e.target.value)}
           >
             <option selected>Select Branch City</option>
-            <option value="blore">Blore</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="hyderabad">hyderabad</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
           </select>
         </div>
 
@@ -199,6 +217,13 @@ export const AddBranch = () => {
     <div className="app">
       <div className="AccountOpening-form">
         <div className="title">Add Branch Details</div>
+        {iserror ? (
+          <div class="alert alert-danger" role="alert">
+            Branch already exists
+          </div>
+        ) : (
+          ""
+        )}
         {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
         {isSubmitted ? <Navigate to="/menu" /> : renderForm}
       </div>
