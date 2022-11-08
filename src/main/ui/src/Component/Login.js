@@ -5,6 +5,8 @@ import { authenticateLogin } from "../api";
 
 // import { UseNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+//localStorage.setItem("isAuthenticated", "false");
+console.log("auth:", localStorage.getItem("isAuthenticated"));
 
 export const Login = () => {
   // React States

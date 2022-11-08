@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 const user=localStorage.getItem('isAuthenticated')
+console.log("navbar : ",user);
 const admin =(<>
      
   <br />
@@ -38,7 +39,10 @@ const nonadmin=(
 )
 function ColorSchemesExample() {
   
-  return ( user?admin:nonadmin
+  return ( 
+    <>
+    {localStorage.getItem('isAuthenticated')?admin:nonadmin}
+      </>
   )
 }
 
