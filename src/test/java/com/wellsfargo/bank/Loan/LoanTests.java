@@ -3,6 +3,8 @@ package com.wellsfargo.bank.Loan;
 import com.wellsfargo.bank.model.Loan;
 import com.wellsfargo.bank.repository.LoanRepository;
 import com.wellsfargo.bank.service.LoanServiceImpl;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import com.wellsfargo.bank.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,15 @@ public class LoanTests {
     @Autowired
     LoanRepository loanRepo;
 
-    @Test
-    void contextLoads() {
-    }
+    @Autowired
+    LoanService loanService;
+//
+//    @Test
+//    void contextLoads() {
+//    }
 
     @Test
+    @Order(1)
     public  void testCreate(){
         Loan loan = new Loan();
         loan.setBranch_id("b001");
@@ -34,10 +40,20 @@ public class LoanTests {
     }
 
     @Test
-    public void CheckDelete(){
-        loanRepo.deleteById("c001");
-        assertThat(loanRepo.existsById("c001")).isFalse();
+    @Order(2)
+    public void testGetLoanDetail(){
+        Loan loan = loanService.getloandetail("c001");
+        Assertions.assertThat(loan.getCustomer_number()).isEqualTo("c001");
+
     }
+
+    @Test
+    @Order(3)
+    public void testCloseLoan(){
+        boolean a = loanService.closeLoan("c001");
+        assertEquals(a,true);
+    }
+
 
 
 }

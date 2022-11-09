@@ -111,7 +111,7 @@ public class Customer {
 		return customer_date_of_birth;
 	}
 
-//	public void setCustomer_date_of_birth(String customer_date_of_birth) {
-//		this.customer_date_of_birth = customer_date_of_birth;
-//	}
+	public void setCustomer_date_of_birth(Date customer_date_of_birth) {
+		this.customer_date_of_birth = customer_date_of_birth;
+	}
 }
