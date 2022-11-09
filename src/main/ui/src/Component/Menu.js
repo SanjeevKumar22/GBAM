@@ -32,7 +32,6 @@ const Menu = () => {
         >
           Display Customers{" "}
         </button>
-        {/*<button onClick={<Navigate replace to="loan" />}>Apply for Loan</button>*/}
         <br></br>
         <br></br>
         <button
@@ -52,7 +51,6 @@ const Menu = () => {
         >
           Add Branch
         </button>
-        {/*<button onClick={<Navigate replace to="statement" />}>View Statement</button>*/}
         <br></br>
         <br></br>
 
@@ -63,7 +61,6 @@ const Menu = () => {
         >
           Display Branch Details
         </button>
-        {/*<button onClick={<Navigate replace to="transactions" />}>Transactions</button>*/}
       </div>
     </div>
   );
