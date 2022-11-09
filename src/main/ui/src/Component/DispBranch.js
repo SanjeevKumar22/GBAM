@@ -163,10 +163,10 @@ const DispBranch = () => {
         <h1 className="text-center">List of Branches</h1>
         <table className="table table-bordered">
           <tr>
-            <th>branch_id</th>
-            <th>branch_city</th>
-            <th>branch_name</th>
-            <th>delete branch</th>
+            <th>Branch Id</th>
+            <th>Branch City</th>
+            <th>Branch Name</th>
+            <th>Delete Branch</th>
           </tr>
 
           {data.length > 0 ? (

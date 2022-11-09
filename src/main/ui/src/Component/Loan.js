@@ -38,9 +38,9 @@ const Loan = () => {
       <h1>Loan Details</h1>
       <table className="table table-hover">
         <tr>
-          <th>customer_number</th>
-          <th>branch_id</th>
-          <th>loam Amount</th>
+          <th>Customer Number</th>
+          <th>Branch Id</th>
+          <th>Loan Amount</th>
         </tr>
         {isloan ? (
           <tr>

@@ -423,11 +423,11 @@ const DispCustomers = () => {
       )}
       <table className="table table-bordered text-center  ">
         <tr>
-          <th>customer_number</th>
-          <th>account_number</th>
-          <th>branch_id</th>
-          <th>balance</th>
-          <th>opening Date</th>
+          <th>Customer Number</th>
+          <th>Account Number</th>
+          <th>Branch Id</th>
+          <th>Balance</th>
+          <th>Opening Date</th>
           <th>Delete Account</th>
           <th>View Loan</th>
         </tr>
