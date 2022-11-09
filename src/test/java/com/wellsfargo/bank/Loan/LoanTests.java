@@ -13,6 +13,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class LoanTests {
 
     @Autowired
@@ -29,7 +30,7 @@ public class LoanTests {
         loan.setLoan_amount(1000);
         loan.setCustomer_number("c001");
         loanRepo.save(loan);
-//        assertNotNull(loanRepo.findById("c001").get());
+        assertNotNull(loanRepo.findById("c001").get());
     }
 
     @Test

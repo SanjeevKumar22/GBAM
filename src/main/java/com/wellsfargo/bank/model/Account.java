@@ -30,7 +30,12 @@ public class Account {
 	private String account_status;
 	
 	public Account() {}
-		public Account(String customer_number, String account_number, String branch_id, String balance, Date opening_date, String account_type, String account_status) {
+
+	public void setAccount_status(String account_status) {
+		this.account_status = account_status;
+	}
+
+	public Account(String customer_number, String account_number, String branch_id, String balance, Date opening_date, String account_type, String account_status) {
 		this.customer_number = customer_number;
 		this.account_number = account_number;
 		this.branch_id = branch_id;
