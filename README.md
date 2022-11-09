@@ -1,8 +1,8 @@
 # GBAM
 
-sanjeevFinal_UI - Final UI Code
+Final UI Code-Branch = Client 
 <br>
-aniket_finalBackend - Final server code
+Final Backend Code Branch = Server 
 <br>
 <br>
 #Contributors
