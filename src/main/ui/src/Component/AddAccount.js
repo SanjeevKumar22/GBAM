@@ -235,7 +235,8 @@ export const AddAccount = () => {
         <div className="input-container">
           <label>Balance </label>
           <input
-            type="integer"
+            type="number"
+            min="5000"
             name="balance"
             required
             onChange={(e) => setBalc(e.target.value)}
